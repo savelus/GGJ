@@ -1,3 +1,4 @@
+using System;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -11,9 +12,10 @@ namespace Hero {
 
         private float _fieldHalfHeight;
         private bool _isMove;
+        private Action<Collider2D> _onTriggerAction;
 
 
-        public void Init(HeroSettings heroSettings, float fieldHalfHeight) {
+        public void Init(HeroSettings heroSettings, float fieldHalfHeight, Action<Collider2D> onTriggerAction) {
             _degreeAngle = heroSettings.Angle;
             _radianAngle = heroSettings.Angle * Mathf.Deg2Rad;
             _speed = heroSettings.Speed;
@@ -21,6 +23,8 @@ namespace Hero {
 
             _isMove = false;
 
+            _onTriggerAction += onTriggerAction;
+            
             RotateSprite();
         }
 
@@ -49,6 +53,10 @@ namespace Hero {
             if (Mathf.Abs(deltaY + transform.position.y) >= _fieldHalfHeight) return;
 
             transform.position += new Vector3(0, deltaY, 0);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other) {
+            _onTriggerAction?.Invoke(other);
         }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Infrastructure.Input;
 using Levels;
 using ScriptableObjects;
@@ -29,7 +28,6 @@ namespace Infrastructure {
 
             _inputSystem = inputSystem;
             _inputSystem.SubscribeOnChangeDirection(_hero.ChangeDirection);
-
         }
         
         public void RunLevel(GameObject currentLevel) {
@@ -42,6 +40,8 @@ namespace Infrastructure {
             _hero.SetMoveState(false);
             SetViewHeroState(false);
             
+            _mover.EndLevel();
+            
             OnLevelEnd?.Invoke();
         }
 
@@ -51,9 +51,15 @@ namespace Infrastructure {
                 return;
             }
 
-            _hero.Init(_heroSettings, Camera.main.orthographicSize);
+            _hero.Init(_heroSettings, Camera.main.orthographicSize, HeroTrigger);
             _hero.transform.position = _startPosition;
             SetViewHeroState(true);
+        }
+
+        private void HeroTrigger(Collider2D obj) {
+            if (obj.CompareTag("border")) {
+                EndLevel();
+            }
         }
 
         private void SetViewHeroState(bool state) {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Security.Cryptography;
+using UnityEngine;
 
 namespace Levels {
     public class LevelMover : MonoBehaviour {
@@ -22,6 +23,12 @@ namespace Levels {
 
         private void MoveLevel() {
             _level.transform.position -= new Vector3(_speed * Time.deltaTime, 0);
+        }
+
+        public void EndLevel() {
+            SetMoveState(false);
+            gameObject.SetActive(false);
+            Destroy(_level);
         }
     }
 }
