@@ -11,11 +11,13 @@ namespace Infrastructure {
         [SerializeField] private ComputerInputSystem _inputSystem;
         [SerializeField] private LevelLoader _levelLoader;
         [SerializeField] private LevelMover _levelMover;
+        [SerializeField] private TextGenerator.TextGenerator _textGenerator;
 
         [SerializeField] private Vector2 _startPosition;
 
         private void Start() {
-            _levelLoader.Init(_heroSettings, _startPosition, _inputSystem, _levelMover);
+            _textGenerator.Init();
+            _levelLoader.Init(_heroSettings, _startPosition, _inputSystem, _levelMover, _textGenerator);
             _levelLoader.RunLevel(_levels.LevelPrefabs[0]);
         }
 

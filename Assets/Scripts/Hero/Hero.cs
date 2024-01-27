@@ -13,9 +13,13 @@ namespace Hero {
         private float _fieldHalfHeight;
         private bool _isMove;
         private Action<Collider2D> _onTriggerAction;
+        private Action<Vector2, float> _onSpawnSymbol;
+        private float _timer;
 
-
-        public void Init(HeroSettings heroSettings, float fieldHalfHeight, Action<Collider2D> onTriggerAction) {
+        public void Init(HeroSettings heroSettings, 
+                         float fieldHalfHeight, 
+                         Action<Collider2D> onTriggerAction, 
+                         Action<Vector2, float> onSpawnSymbol) {
             _degreeAngle = heroSettings.Angle;
             _radianAngle = heroSettings.Angle * Mathf.Deg2Rad;
             _speed = heroSettings.Speed;
@@ -23,7 +27,8 @@ namespace Hero {
 
             _isMove = false;
 
-            _onTriggerAction += onTriggerAction;
+            _onTriggerAction = onTriggerAction;
+            _onSpawnSymbol = onSpawnSymbol;
             
             RotateSprite();
         }
@@ -44,7 +49,15 @@ namespace Hero {
         }
 
         private void Update() {
-            if (_isMove) Move();
+            if (!_isMove) return;
+            
+            Move();
+            _timer += Time.deltaTime * _speed;
+
+            if (_timer > 0.7) {
+                _onSpawnSymbol?.Invoke(transform.position, _degreeAngle);
+                _timer = 0;
+            }
         }
 
         private void Move() {

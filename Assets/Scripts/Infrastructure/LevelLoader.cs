@@ -14,14 +14,17 @@ namespace Infrastructure {
         private HeroSettings _heroSettings;
         private ComputerInputSystem _inputSystem;
         private LevelMover _mover;
+        private TextGenerator.TextGenerator _textGenerator;
 
         private Hero.Hero _hero;
 
         public void Init(HeroSettings heroSettings, 
                          Vector2 startPosition, 
                          ComputerInputSystem inputSystem, 
-                         LevelMover mover) {
+                         LevelMover mover,
+                         TextGenerator.TextGenerator textGenerator) {
             _mover = mover;
+            _textGenerator = textGenerator;
             _heroSettings = heroSettings;
             SpawnHero();
              _startPosition = startPosition;
@@ -41,6 +44,7 @@ namespace Infrastructure {
             SetViewHeroState(false);
             
             _mover.EndLevel();
+            _textGenerator.EndLevel();
             
             OnLevelEnd?.Invoke();
         }
@@ -51,7 +55,7 @@ namespace Infrastructure {
                 return;
             }
 
-            _hero.Init(_heroSettings, Camera.main.orthographicSize, HeroTrigger);
+            _hero.Init(_heroSettings, Camera.main.orthographicSize, HeroTrigger, SpawnSymbol);
             _hero.transform.position = _startPosition;
             SetViewHeroState(true);
         }
@@ -62,6 +66,10 @@ namespace Infrastructure {
             }
         }
 
+        private void SpawnSymbol(Vector2 position, float degreeAngle) {
+            _textGenerator.SpawnNextSymbol(position, degreeAngle);
+        }
+
         private void SetViewHeroState(bool state) {
             _hero.gameObject.SetActive(state);
         }
@@ -70,6 +78,7 @@ namespace Infrastructure {
             yield return new WaitForSeconds(3);
             _hero.SetMoveState(true);
             _mover.SetMoveState(true);
+            _textGenerator.StartLevel(_heroSettings.Speed);
         }
 
         private void SpawnHero() {
