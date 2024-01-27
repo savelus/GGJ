@@ -8,7 +8,7 @@ namespace Levels {
 
         public void Init(float speed, GameObject level) {
             _speed = speed;
-            _level = level;
+            _level = Instantiate(level, transform);
         }
 
         public void SetMoveState(bool state) {
