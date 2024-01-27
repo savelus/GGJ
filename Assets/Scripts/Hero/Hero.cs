@@ -19,12 +19,13 @@ namespace Hero {
         public void Init(HeroSettings heroSettings, 
                          float fieldHalfHeight, 
                          Action<Collider2D> onTriggerAction, 
-                         Action<Vector2, float> onSpawnSymbol) {
+                         Action<Vector2, float> onSpawnSymbol,
+                         Sprite heroSprite) {
             _degreeAngle = heroSettings.Angle;
             _radianAngle = heroSettings.Angle * Mathf.Deg2Rad;
             _speed = heroSettings.Speed;
             _fieldHalfHeight = fieldHalfHeight;
-
+            _heroSprite.sprite = heroSprite;
             _isMove = false;
 
             _onTriggerAction = onTriggerAction;

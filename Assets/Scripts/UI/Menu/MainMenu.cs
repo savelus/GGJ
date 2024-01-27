@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Menu
+namespace UI.Menu
 {
-    public class UIController : MonoBehaviour
+    public class MainMenu : MonoBehaviour
     {
         [SerializeField] private Button _startButton;
         [SerializeField] private TextMeshProUGUI _textRecord;

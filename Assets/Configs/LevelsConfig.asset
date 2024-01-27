@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbf65591a2f4b2e9f4e850b464b9702, type: 3}
   m_Name: LevelsConfig
   m_EditorClassIdentifier: 
-  LevelPrefabs:
-  - {fileID: 3494039615648417559, guid: 056a8f807c7e77b4aa033efc49903158, type: 3}
+  LevelsSettings:
+  - LevelBG: {fileID: 21300000, guid: 7770dd273b1efb449a68fd4f6b55660d, type: 3}
+    Hero: {fileID: 21300000, guid: 8d07738d651adaa488e2125a79ddf965, type: 3}
+    Music: {fileID: 8300000, guid: ae9da30156ba93d4da3e6c054c9485a6, type: 3}
+    LevelPrefab: {fileID: 3494039615648417559, guid: 056a8f807c7e77b4aa033efc49903158, type: 3}
+  - LevelBG: {fileID: 21300000, guid: 3a248671410f0fa43a457d421f5f05c4, type: 3}
+    Hero: {fileID: 21300000, guid: 7fc749c7a35e8c94baae5a2546bd015a, type: 3}
+    Music: {fileID: 8300000, guid: ae9da30156ba93d4da3e6c054c9485a6, type: 3}
+    LevelPrefab: {fileID: 3494039615648417559, guid: 056a8f807c7e77b4aa033efc49903158, type: 3}
