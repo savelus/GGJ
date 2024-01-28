@@ -36,7 +36,12 @@ namespace Infrastructure {
              _startPosition = startPosition;
 
             _inputSystem = inputSystem;
-            _inputSystem.SubscribeOnChangeDirection(_hero.ChangeDirection);
+            _inputSystem.SubscribeOnChangeDirection(ChangeDirection);
+        }
+
+        private void ChangeDirection() {
+            _hero.ChangeDirection();
+            _audioManager.ChangeDirectionEffect();
         }
 
         public void RunLevel(Level level, Action startScore) {
@@ -72,7 +77,7 @@ namespace Infrastructure {
             }
             else if (obj.CompareTag("Coin")) {
                 _scoreController.AddScore(5);
-                _audioManager.PlayPickUpEffect();
+                _audioManager.PickUpEffect();
                 Destroy(obj.gameObject);
             }
             

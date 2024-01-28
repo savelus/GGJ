@@ -30,6 +30,7 @@ namespace Infrastructure {
             _textGenerator.Init();
             _levelLoader.Init(_heroSettings, _startPosition, _inputSystem, _levelMover, _textGenerator, _scoreController, _audioManager);
             _levelLoader.SubscribeOnLevelEnd(EndLevel);
+            _audioManager.StopBackSound();
         }
 
         private void StartLevel() {
@@ -39,6 +40,8 @@ namespace Infrastructure {
             _scoreController.SubscribeOnScoreChanged(ScoreChanged);
             _gameUI.SetScore(0);
             _gameUI.SetBackground(level.LevelBG);
+            
+            _audioManager.ChangeDirectionEffect();
             _audioManager.PlayBackSound(level.Music);
         }
 
