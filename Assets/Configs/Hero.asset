@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroPrefab: {fileID: 6861781123015472107, guid: ae9739abdb0cdf24e905acd2b91a0af2, type: 3}
   Angle: 45
-  Speed: 5
+  Speed: 7

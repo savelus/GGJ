@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioSource _effectSource;
     
     [SerializeField] private AudioClip _pickUpMoney;
+    [SerializeField] private AudioClip _changeDirection;
+    [SerializeField] private AudioClip _mainTheme;
     
     public void PlayBackSound(AudioClip clip) {
         _backSource.clip = clip;
@@ -15,12 +17,18 @@ public class AudioManager : MonoBehaviour {
 
     public void StopBackSound() {
         _backSource.Stop();
+
+        _backSource.clip = _mainTheme;
+        _backSource.Play();
     }
 
-    public void PlayPickUpEffect() {
-        if(_pickUpMoney == null) return;
+    public void PickUpEffect() => PlayEffect(_pickUpMoney);
+    public void ChangeDirectionEffect() => PlayEffect(_changeDirection);
 
-        _effectSource.clip = _pickUpMoney;
+    private void PlayEffect(AudioClip clip) {
+        if(clip == null) return;
+
+        _effectSource.clip = clip;
         _effectSource.Play();
     }
 }
