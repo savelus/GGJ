@@ -12,7 +12,7 @@ namespace Infrastructure.Input {
         }
 
         private void Update() {
-            if (UnityEngine.Input.GetKeyDown(DirectionButton)) {
+            if (UnityEngine.Input.GetKeyDown(DirectionButton) || UnityEngine.Input.GetMouseButtonDown(0)) {
                 _directionChanged?.Invoke();
             }
         }
