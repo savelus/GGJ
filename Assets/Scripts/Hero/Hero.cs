@@ -55,7 +55,7 @@ namespace Hero {
             Move();
             _timer += Time.deltaTime * _speed;
 
-            if (_timer > 0.7) {
+            if (_timer > 0.55) {
                 _onSpawnSymbol?.Invoke(transform.position, _degreeAngle);
                 _timer = 0;
             }
