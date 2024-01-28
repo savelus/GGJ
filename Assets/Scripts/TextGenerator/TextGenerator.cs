@@ -68,7 +68,7 @@ namespace TextGenerator {
             foreach (var symbol in _activeSymbols) {
                 symbol.transform.position -= deltaPosition;
                 
-                if (MathF.Abs(symbol.transform.position.x) > _canvasHalfWidth) {
+                if (MathF.Abs(symbol.transform.position.x) > _canvasHalfWidthWorld) {
                     symbolsToRelease.Add(symbol);
                     _symbolsPool.Release(symbol);
                 }

@@ -88,7 +88,7 @@ namespace Infrastructure {
         }
 
         private IEnumerator StartLevelCoroutine(Action startScore) {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
             _hero.SetMoveState(true);
             _mover.SetMoveState(true);
             _textGenerator.StartLevel(_heroSettings.Speed);
