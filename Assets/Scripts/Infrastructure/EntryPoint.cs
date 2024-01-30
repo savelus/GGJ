@@ -21,11 +21,12 @@ namespace Infrastructure {
 
         [SerializeField] private Vector2 _startPosition;
         private int _score;
+        private LevelType _currentLevel;
 
         private void Start() {
             _mainMenu.SubscribeOnStartButton(StartLevel);
             _mainMenu.gameObject.SetActive(true);
-            _mainMenu.SetRecord(PlayerPrefs.GetInt("score"));
+            _mainMenu.ViewAllRecords();
             
             _textGenerator.Init();
             _levelLoader.Init(_heroSettings, _startPosition, _inputSystem, _levelMover, _textGenerator, _scoreController, _audioManager);
@@ -36,6 +37,7 @@ namespace Infrastructure {
         private void StartLevel() {
             _mainMenu.gameObject.SetActive(false);
             var level = GetRandomLevel();
+            _currentLevel = level.LevelName;
             _levelLoader.RunLevel(level, () => _scoreController.StartScore());
             _scoreController.SubscribeOnScoreChanged(ScoreChanged);
             _gameUI.SetScore(0);
@@ -50,15 +52,14 @@ namespace Infrastructure {
             _scoreController.EndScore();
             SetScore();
             _audioManager.StopBackSound();
-            
-            
         }
 
         private void SetScore() {
-            if (PlayerPrefs.GetInt("score") > _score) return;
+            
+            if (PlayerPrefs.GetInt(_currentLevel.ToString()) > _score) return;
 
-            _mainMenu.SetRecord(_score);
-            PlayerPrefs.SetInt("score", _score);
+            _mainMenu.SetRecord(_currentLevel, _score);
+            PlayerPrefs.SetInt(_currentLevel.ToString(), _score);
         }
 
         private void ScoreChanged(int score) {
