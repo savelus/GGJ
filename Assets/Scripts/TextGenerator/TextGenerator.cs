@@ -42,13 +42,14 @@ namespace TextGenerator {
             _islevelStart = false;
         }
 
-        public void SpawnNextSymbol(Vector2 worldPosition, float degreeAngle)  {
+        public void SpawnNextSymbol(Vector2 worldPosition, float degreeAngle)   {
             var screePosition = Camera.main.WorldToScreenPoint(worldPosition);
             var symbol = _symbolsPool.Take();
             RotateSymbol(symbol.transform, degreeAngle);
             
             symbol.GetComponent<TMP_Text>().text = _currentJoke[_currentSymbol].ToString();
-            symbol.transform.position = screePosition;
+            //symbol.transform.position = screePosition;
+            symbol.transform.position = worldPosition;
             symbol.SetActive(true);
             
             _activeSymbols.Add(symbol);
@@ -62,12 +63,12 @@ namespace TextGenerator {
             if(!_islevelStart) return;
             if(_activeSymbols == null || _activeSymbols.Count == 0) return;
 
-            Vector3 deltaPosition = new Vector3(Time.deltaTime * (_currentSpeed - 1) * _canvasHalfWidth / _canvasHalfWidthWorld, 0, 0);
+            Vector3 deltaPosition = new Vector3(Time.deltaTime * _currentSpeed , 0, 0);
             var symbolsToRelease = new List<GameObject>();
             foreach (var symbol in _activeSymbols) {
                 symbol.transform.position -= deltaPosition;
                 
-                if (MathF.Abs(symbol.transform.position.x) > _canvasHalfWidth) {
+                if (MathF.Abs(symbol.transform.position.x) > _canvasHalfWidthWorld) {
                     symbolsToRelease.Add(symbol);
                     _symbolsPool.Release(symbol);
                 }

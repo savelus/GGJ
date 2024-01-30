@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Levels {
     public class LevelMover : MonoBehaviour {
@@ -8,6 +7,7 @@ namespace Levels {
         private bool _moveState;
 
         public void Init(float speed, GameObject level) {
+            gameObject.SetActive(true);
             _speed = speed;
             _level = Instantiate(level, transform);
         }
