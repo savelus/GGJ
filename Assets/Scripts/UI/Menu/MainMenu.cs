@@ -12,7 +12,6 @@ namespace UI.Menu
     public class MainMenu : MonoBehaviour
     {
         [SerializeField] private Button _startButton;
-        [SerializeField] private TextMeshProUGUI _textRecord;
         [SerializeField] private List<LabelWithLevelType> _records;
 
         public void SubscribeOnStartButton(UnityAction callback) {
