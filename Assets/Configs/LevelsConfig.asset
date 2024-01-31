@@ -22,19 +22,19 @@ MonoBehaviour:
     LevelBG: {fileID: 21300000, guid: a9a9ec0b16740f04abf35c8095ae6475, type: 3}
     Hero: {fileID: 21300000, guid: 7fc749c7a35e8c94baae5a2546bd015a, type: 3}
     Music: {fileID: 8300000, guid: fcb7c6d9bebf0974ca5a8e23b16fb56c, type: 3}
-    LevelPrefab: {fileID: 3120764923666089486, guid: 45acb299d4c05e84b8c55e66aee2065b, type: 3}
+    LevelPrefab: {fileID: 3120764923666089486, guid: a94ea76160f4eef42bfd282cf3b12b33, type: 3}
   - LevelName: 1
     LevelBG: {fileID: 21300000, guid: 4e3bd671fec8da24183e44bb8267e99b, type: 3}
     Hero: {fileID: 21300000, guid: 5a7506a3b1043b64a83aaa2177cff0a9, type: 3}
     Music: {fileID: 8300000, guid: d8b3603fffdedd345a37b24a526f3458, type: 3}
-    LevelPrefab: {fileID: 3120764923666089486, guid: 45acb299d4c05e84b8c55e66aee2065b, type: 3}
+    LevelPrefab: {fileID: 3120764923666089486, guid: 46298532877b57749a87d9361079883d, type: 3}
   - LevelName: 2
     LevelBG: {fileID: 21300000, guid: b92d73742f23937489c9c620291faeb3, type: 3}
     Hero: {fileID: 21300000, guid: 5e3369f814f6b604a801ae966965de86, type: 3}
     Music: {fileID: 8300000, guid: 56915ae28aad71e43a0e303d4ea8ed96, type: 3}
-    LevelPrefab: {fileID: 3120764923666089486, guid: 45acb299d4c05e84b8c55e66aee2065b, type: 3}
+    LevelPrefab: {fileID: 3120764923666089486, guid: 032cb28b9bc1ba74a981f730fdd6bd8a, type: 3}
   - LevelName: 0
     LevelBG: {fileID: 21300000, guid: 4273adcce154c8247be0a436ee0ccc1c, type: 3}
     Hero: {fileID: 21300000, guid: 3dd31cd58c71a384585102c67c13ab9b, type: 3}
     Music: {fileID: 8300000, guid: f5cc292b99ed0d145aef702b7611f1a3, type: 3}
-    LevelPrefab: {fileID: 3120764923666089486, guid: 45acb299d4c05e84b8c55e66aee2065b, type: 3}
+    LevelPrefab: {fileID: 3120764923666089486, guid: e99cbc3cfa2146f4a8e890707c9a39ba, type: 3}
